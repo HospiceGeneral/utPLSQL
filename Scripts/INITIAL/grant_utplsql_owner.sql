@@ -21,3 +21,5 @@ Grant Insert Any table to HG_TEST_NR;
 Grant Update Any table to HG_TEST_NR;
 Grant Delete Any table to HG_TEST_NR;
 
+create context HG_TEST_NR_INFO using HG_TEST_NR.ut_session_context;
+grant CREATE ANY SYNONYM to hg_test_nr;

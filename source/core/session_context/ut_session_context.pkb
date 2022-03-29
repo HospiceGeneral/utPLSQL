@@ -15,7 +15,8 @@ create or replace package body ut_session_context as
   See the License for the specific language governing permissions and
   limitations under the License.
   */
-  gc_context_name constant varchar2(30) := ut_utils.ut_owner()||'_INFO';
+  -- spécifique à l'Hospice general 
+  gc_context_name constant varchar2(30) := 'HG_TEST_NR_INFO';
 
   procedure set_context(a_name varchar2, a_value varchar2) is
   begin
