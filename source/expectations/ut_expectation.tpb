@@ -762,6 +762,16 @@ create or replace type body ut_expectation as
     l_result.expectation := self;
     return l_result;
   end;
+  
+  member procedure to_has_message_in_message_stack(self in ut_expectation, a_expected boolean) is
+  begin
+    self.to_( ut_has_message_in_message_stack(a_expected => a_expected, pv_Minimum_Level => null));
+  end;
+  
+  member procedure to_has_error_in_message_stack(self in ut_expectation, a_expected boolean) is
+  begin
+    self.to_( ut_has_message_in_message_stack(a_expected => a_expected, pv_Minimum_Level => 'ERROR'));
+  end;
 
 end;
 /
