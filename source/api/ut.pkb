@@ -103,6 +103,12 @@ create or replace package body ut is
     return ut_expectation_json(ut_data_value_json(a_actual), a_message);
   end;  
   
+  function expect_no_actual(a_message varchar2) return ut_expectation Is
+    a_actual boolean := True;
+  Begin 
+     return ut_expectation(ut_data_value_boolean(a_actual), a_message);
+  End;
+    
   procedure fail(a_message in varchar2) is
   begin
     ut_expectation_processor.report_failure(a_message);

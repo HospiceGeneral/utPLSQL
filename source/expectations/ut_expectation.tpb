@@ -763,14 +763,24 @@ create or replace type body ut_expectation as
     return l_result;
   end;
   
-  member procedure to_has_message_in_message_stack(self in ut_expectation, a_expected boolean) is
+  member procedure to_has_message_in_message_stack(self in ut_expectation) is
   begin
-    self.to_( ut_has_message_in_message_stack(a_expected => a_expected, pv_Minimum_Level => null));
+    self.to_( ut_has_message_in_message_stack(a_expected => True, pv_Minimum_Level => null));
   end;
   
-  member procedure to_has_error_in_message_stack(self in ut_expectation, a_expected boolean) is
+   member procedure not_to_has_message_in_message_stack(self in ut_expectation) is
   begin
-    self.to_( ut_has_message_in_message_stack(a_expected => a_expected, pv_Minimum_Level => 'ERROR'));
+    self.to_( ut_has_message_in_message_stack(a_expected => False, pv_Minimum_Level => null));
+  end;
+  
+  member procedure to_has_error_in_message_stack(self in ut_expectation) is
+  begin
+    self.to_( ut_has_message_in_message_stack(a_expected => True, pv_Minimum_Level => HG_UTILITIES.Logger.V_LEVEL_ERROR));
+  end;
+  
+   member procedure not_to_has_error_in_message_stack(self in ut_expectation) is
+  begin
+    self.to_( ut_has_message_in_message_stack(a_expected => False, pv_Minimum_Level => HG_UTILITIES.Logger.V_LEVEL_ERROR));
   end;
 
 end;

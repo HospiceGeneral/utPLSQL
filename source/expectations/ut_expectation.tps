@@ -175,8 +175,10 @@ create or replace type ut_expectation force under ut_expectation_base(
   member function  not_to_be_within_pct(a_dist number) return ut_be_within_pct,
   
   -- specific to Hospice General 
-  member procedure  to_has_message_in_message_stack(self in ut_expectation, a_expected boolean),
-  member procedure  to_has_error_in_message_stack(self in ut_expectation, a_expected boolean)
+  member procedure  to_has_message_in_message_stack(self in ut_expectation),
+  member procedure  not_to_has_message_in_message_stack(self in ut_expectation),
+  member procedure  to_has_error_in_message_stack(self in ut_expectation),
+  member procedure  not_to_has_error_in_message_stack(self in ut_expectation)
 )
 not final
 /

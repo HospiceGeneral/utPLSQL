@@ -40,11 +40,13 @@ create or replace type body ut_has_message_in_message_stack as
   
      l_result boolean;
   Begin 
-   if self.Minimum_Level is null or self.Minimum_Level not in ( HG_UTILITIES.Logger.V_LEVEL_CRITICAL,HG_UTILITIES.Logger.V_LEVEL_CRITICAL) Then 
+   if self.Minimum_Level is null or self.Minimum_Level not in ( HG_UTILITIES.Logger.V_LEVEL_ERROR,HG_UTILITIES.Logger.V_LEVEL_CRITICAL) Then 
       l_result := HG_UTILITIES.Logger.a_Des_Messages_Dans_La_Pile;
    Else
       l_result := HG_UTILITIES.Logger.a_Des_Erreurs_Dans_La_Pile;
    end if;
+   
+   return l_result;
   End;
     
   overriding member function run_matcher(self in out nocopy ut_has_message_in_message_stack, a_actual ut_data_value) return boolean is
@@ -53,12 +55,7 @@ create or replace type body ut_has_message_in_message_stack as
     l_result_pile Boolean;
   begin
     l_result_pile := test_pile();
-    
-    if a_actual is of (ut_data_value_boolean) then
-      l_result_expectation :=  ut_utils.int_to_boolean( treat(a_actual as ut_data_value_boolean).data_value);
-    else
-      l_result_expectation := (self as ut_matcher).run_matcher(a_actual);
-    End If;
+    l_result_expectation :=  ut_utils.int_to_boolean( treat(self.expected as ut_data_value_boolean).data_value);
 
    If l_result_expectation = l_result_pile Then 
       l_result := True;

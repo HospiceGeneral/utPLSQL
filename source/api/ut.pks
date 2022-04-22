@@ -48,6 +48,9 @@ create or replace package ut authid current_user as
   function expect(a_actual in json_element_t , a_message varchar2 := null) return ut_expectation_json;
 
   function expect(a_actual in json , a_message varchar2 := null) return ut_expectation_json;
+  
+  -- specific to hospice general - for message stack there is no actual to provide, only error message
+  function expect_no_actual(a_message varchar2) return ut_expectation;
 
   procedure fail(a_message in varchar2);
 
