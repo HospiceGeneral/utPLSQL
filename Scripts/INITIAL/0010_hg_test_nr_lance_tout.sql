@@ -50,7 +50,7 @@ Execute Session_Manager.start_Session('ADMINISTRA', Null, 'Install UT');
 --------------------------------------------------------------------------------------------------------------------------------
 @log "Grant HG_TEST_HG..."
 --------------------------------------------------------------------------------------------------------------------------------
-@lance "./grant_utplsql_owner.sql"
+@lance "./grant_hg_test_nr_rights.sql"
 
 --------------------------------------------------------------------------------------------------------------------------------
 @log "Set HG_TEST_HG..."
@@ -314,7 +314,7 @@ alter session set current_schema = HG_TEST_NR;
 @lance "./../../source/expectations/data_values/ut_cursor_details.tpb"
 @lance "./../../source/expectations/ut_expectation_compound.tps"
 @lance "./../../source/expectations/ut_expectation_json.tps"
-@lance "./../../source/expectations/ut_has_message_in_message_stack.tps"
+@lance "./../../source/expectations/matchers/ut_has_message_in_message_stack.tps"
 
 @lance "./../../source/expectations/matchers/ut_matcher_options_items.tpb"
 @lance "./../../source/expectations/matchers/ut_matcher_options.tpb"
@@ -361,7 +361,7 @@ alter session set current_schema = HG_TEST_NR;
 @lance "./../../source/expectations/ut_expectation_compound.tpb"
 @lance "./../../source/expectations/ut_expectation_json.tpb"
 @lance "./../../source/expectations/data_values/ut_key_anyvalues.tpb"
-@lance "./../../source/expectations/ut_has_message_in_message_stack.tpb"
+@lance "./../../source/expectations/matchers/ut_has_message_in_message_stack.tpb"
 
 --------------------------------------------------------------------------------------------------------------------
 @log "core reporter  ..."

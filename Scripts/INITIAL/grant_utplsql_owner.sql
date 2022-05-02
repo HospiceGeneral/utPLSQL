@@ -17,17 +17,6 @@
 --                  
 --------------------------------------------------------------------------------------------------------------------------------
 GRANT Execute on hg_test_nr.ut to public;
-CREATE OR REPLACE CONTEXT HG_TEST_NR_INFO Using HG_TEST_NR.UT_SESSION_CONTEXT;
-
-grant create any synonym  to HG_TEST_NR;
-grant create any procedure  to HG_TEST_NR;
-grant create any type  to HG_TEST_NR;
-grant create any trigger  to HG_TEST_NR;
-
-Grant Select Any table to HG_TEST_NR;
-Grant Insert Any table to HG_TEST_NR;
-Grant Update Any table to HG_TEST_NR;
-Grant Delete Any table to HG_TEST_NR;
 
 --
 ----public API
